@@ -1,0 +1,312 @@
+{
+  "name": "magnexis-agent-studio",
+  "displayName": "Magnexis Agent Studio",
+  "author": "Magnexis",
+  "description": "A local-first coding agent workbench for VS Code. Magnexis is a connector, not a model: it routes chat, edits, and tools to any OpenAI-compatible provider you choose, using your own API key.",
+  "version": "0.4.0",
+  "icon": "media/magnexis-icon.png",
+  "publisher": "magnexis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magnexis/magnexis-agent-studio.git"
+  },
+  "homepage": "https://github.com/magnexis/magnexis-agent-studio#readme",
+  "bugs": {
+    "url": "https://github.com/magnexis/magnexis-agent-studio/issues"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "main": "./out/src/extension.js",
+  "bin": {
+    "magnexis": "./bin/magnexis.js"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "magnexis.openChat",
+        "title": "Magnexis: Open Chat"
+      },
+      {
+        "command": "magnexis.openSidebar",
+        "title": "Magnexis: Open Sidebar"
+      },
+      {
+        "command": "magnexis.openChatBeside",
+        "title": "Magnexis: Open Chat Beside Editor",
+        "icon": "$(split-horizontal)"
+      },
+      {
+        "command": "magnexis.openChatInNewWindow",
+        "title": "Magnexis: Open Chat in New Window",
+        "icon": "$(multiple-windows)"
+      },
+      {
+        "command": "magnexis.newChat",
+        "title": "Magnexis: New Chat",
+        "icon": "$(add)"
+      },
+      {
+        "command": "magnexis.addSelectionToThread",
+        "title": "Magnexis: Add Selection to Thread"
+      },
+      {
+        "command": "magnexis.addFileToThread",
+        "title": "Magnexis: Add File to Thread"
+      },
+      {
+        "command": "magnexis.implementTodo",
+        "title": "Magnexis: Implement TODO"
+      },
+      {
+        "command": "magnexis.reviewChanges",
+        "title": "Magnexis: Review Changes"
+      },
+      {
+        "command": "magnexis.setApiKey",
+        "title": "Magnexis: Set API Key"
+      },
+      {
+        "command": "magnexis.clearApiKeys",
+        "title": "Magnexis: Clear API Keys"
+      },
+      {
+        "command": "magnexis.openSettings",
+        "title": "Magnexis: Open Settings"
+      },
+      {
+        "command": "magnexis.testProvider",
+        "title": "Magnexis: Test Provider Connection"
+      },
+      {
+        "command": "magnexis.auth.signIn",
+        "title": "Magnexis: Sign In"
+      },
+      {
+        "command": "magnexis.auth.signUp",
+        "title": "Magnexis: Sign Up"
+      },
+      {
+        "command": "magnexis.auth.signOut",
+        "title": "Magnexis: Sign Out"
+      },
+      {
+        "command": "magnexis.auth.showAccount",
+        "title": "Magnexis: Show Account"
+      },
+      {
+        "command": "magnexis.auth.refreshSession",
+        "title": "Magnexis: Refresh Session"
+      },
+      {
+        "command": "magnexis.cloudWorkflows",
+        "title": "Magnexis: Open Protected Cloud Workflows"
+      },
+      {
+        "command": "magnexis.selectRuntime",
+        "title": "Magnexis: Select Runtime"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "magnexis",
+          "title": "Magnexis",
+          "icon": "media/activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "magnexis": [
+        {
+          "id": "magnexis.sidebar",
+          "name": "Agent Lab",
+          "type": "webview",
+          "icon": "media/activity.svg"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "magnexis.newChat",
+          "when": "view == magnexis.sidebar",
+          "group": "navigation@1"
+        },
+        {
+          "command": "magnexis.openChatBeside",
+          "when": "view == magnexis.sidebar",
+          "group": "navigation@2"
+        },
+        {
+          "command": "magnexis.openChatInNewWindow",
+          "when": "view == magnexis.sidebar",
+          "group": "navigation@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Magnexis Agent Studio",
+      "properties": {
+        "magnexis.provider": {
+          "type": "string",
+          "default": "zai",
+          "enum": [
+            "openai",
+            "anthropic",
+            "gemini",
+            "zai",
+            "mistral",
+            "kimi",
+            "groq",
+            "openrouter",
+            "together",
+            "deepseek",
+            "xai",
+            "perplexity",
+            "cerebras",
+            "fireworks",
+            "sambanova",
+            "nvidia",
+            "ollama",
+            "lmstudio",
+            "custom"
+          ],
+          "description": "Provider preset that Magnexis connects to for completions. Magnexis ships no model of its own; routing, context, and approvals are handled locally and sent to this provider under your API key."
+        },
+        "magnexis.model": {
+          "type": "string",
+          "default": "glm-5.1",
+          "description": "External provider model name sent with each request."
+        },
+        "magnexis.customBaseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Base URL for a custom OpenAI-compatible provider, gateway, or local model server, for example http://localhost:11434/v1."
+        },
+        "magnexis.temperature": {
+          "type": "number",
+          "default": 0.2,
+          "minimum": 0,
+          "maximum": 2,
+          "description": "Sampling temperature."
+        },
+        "magnexis.reasoningEffort": {
+          "type": "string",
+          "default": "medium",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "description": "Guides how much effort the agent should spend planning and checking before answering."
+        },
+        "magnexis.approvalMode": {
+          "type": "string",
+          "default": "agent",
+          "enum": [
+            "chat",
+            "agent",
+            "fullAccess"
+          ],
+          "description": "Controls whether Magnexis only chats, uses workspace tools with approval, or runs tools without prompts."
+        },
+        "magnexis.maxToolRounds": {
+          "type": "number",
+          "default": 12,
+          "minimum": 1,
+          "maximum": 30,
+          "description": "Maximum number of model/tool turns per user request."
+        },
+        "magnexis.commandTimeoutMs": {
+          "type": "number",
+          "default": 120000,
+          "minimum": 5000,
+          "maximum": 600000,
+          "description": "Maximum runtime for shell commands started by the agent."
+        },
+        "magnexis.commentCodeLensEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show CodeLens above TODO comments so Magnexis can implement them."
+        },
+        "magnexis.autoContext": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically include active editor context with each prompt."
+        },
+        "magnexis.persistThreads": {
+          "type": "boolean",
+          "default": true,
+          "description": "Persist the current Magnexis thread in VS Code workspace state."
+        },
+        "magnexis.openOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Focus the Magnexis sidebar after the extension activates."
+        },
+        "magnexis.maxWorkspaceFiles": {
+          "type": "number",
+          "default": 80,
+          "minimum": 10,
+          "maximum": 300,
+          "description": "Maximum workspace file paths included when @workspace is used."
+        },
+        "magnexis.maxFileBytes": {
+          "type": "number",
+          "default": 24000,
+          "minimum": 4000,
+          "maximum": 120000,
+          "description": "Maximum bytes read from a file for context."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "dev": "npm run dev:extension",
+    "dev:extension": "npm run preview:extension",
+    "dev:desktop": "npm run desktop",
+    "dev:web": "npm run preview:web",
+    "dev:cli": "npm run cli -- status",
+    "start": "npm run start:extension",
+    "start:extension": "npm run preview:extension",
+    "start:desktop": "npm run desktop",
+    "start:web": "npm run preview:web",
+    "start:cli": "npm run cli -- status",
+    "start:desktop:preview": "npm run preview:desktop",
+    "start:extension:preview": "npm run preview:extension",
+    "start:web:preview": "npm run preview:web",
+    "compile": "npm run compile:extension && npm run typecheck:desktop",
+    "compile:extension": "tsc -p ./",
+    "typecheck:desktop": "tsc -p apps/desktop/tsconfig.json",
+    "watch": "tsc -watch -p ./",
+    "preview:desktop": "node workspaces/runtime/render-desktop-preview.cjs && node workspaces/runtime/serve-preview.cjs desktop",
+    "preview:extension": "node workspaces/runtime/render-vscode-preview.cjs && node workspaces/runtime/serve-preview.cjs extension",
+    "preview:web": "node workspaces/runtime/render-web-dashboard-preview.cjs && node workspaces/runtime/serve-preview.cjs web",
+    "desktop": "node workspaces/runtime/render-desktop-preview.cjs && electron apps/desktop/electron/main.cjs",
+    "screenshots": "python workspaces/runtime/capture-screenshots.py",
+    "package:vsix": "vsce package --allow-missing-repository",
+    "package": "npm run compile && npm run package:vsix",
+    "release:bundle": "node workspaces/runtime/package-release.cjs",
+    "release": "npm run package && npm run release:bundle",
+    "auth:check": "node -e \"const {loadAuthEnvironment,validateAuthEnvironment}=require('./out/packages/auth/src/index.js'); const env=loadAuthEnvironment({cwd:process.cwd(),env:process.env}); const issues=validateAuthEnvironment(env); if(issues.length){console.error(issues.join('\\n')); process.exit(1);} console.log('Auth environment looks valid.');\"",
+    "cli": "node ./bin/magnexis.js",
+    "doctor": "node ./bin/magnexis.js doctor"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/vscode": "^1.92.0",
+    "@vscode/vsce": "^2.31.1",
+    "electron": "^37.2.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "openai": "^6.4.0",
+    "@supabase/supabase-js": "^2.108.2"
+  }
+}

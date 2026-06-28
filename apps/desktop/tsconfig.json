@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM"],
+    "paths": {
+      "@magnexis/agent-core": ["../../packages/agent-core/src/index.ts"],
+      "@magnexis/config": ["../../packages/config/src/index.ts"],
+      "@magnexis/indexer": ["../../packages/indexer/src/index.ts"],
+      "@magnexis/llm-router": ["../../packages/llm-router/src/index.ts"],
+      "@magnexis/tools": ["../../packages/tools/src/index.ts"],
+      "@magnexis/types": ["../../packages/types/src/index.ts"]
+    },
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+    "include": [
+    "src/**/*.ts",
+    "../../packages/agent-core/src/**/*.ts",
+    "../../packages/config/src/**/*.ts",
+    "../../packages/indexer/src/**/*.ts",
+    "../../packages/llm-router/src/**/*.ts",
+    "../../packages/ui/src/**/*.ts",
+    "../../packages/tools/src/**/*.ts",
+    "../../packages/types/src/**/*.ts"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "@magnexis/types",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Shared Magnexis type definitions.",
+  "main": "src/index.ts",
+  "type": "module"
+}

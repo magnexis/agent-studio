@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "outDir": "out",
+    "rootDir": ".",
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@magnexis/auth": ["./packages/auth/src/index.ts"],
+      "@magnexis/config": ["./packages/config/src/index.ts"],
+      "@magnexis/indexer": ["./packages/indexer/src/index.ts"],
+      "@magnexis/llm-router": ["./packages/llm-router/src/index.ts"],
+      "@magnexis/types": ["./packages/types/src/index.ts"],
+      "@magnexis/tools": ["./packages/tools/src/index.ts"]
+    }
+  },
+  "include": [
+    "src",
+    "packages/auth/src",
+    "packages/config/src",
+    "packages/indexer/src",
+    "packages/llm-router/src",
+    "packages/types/src",
+    "packages/tools/src"
+  ],
+  "exclude": [
+    "node_modules",
+    "out",
+    "apps"
+  ]
+}

@@ -1,0 +1,36 @@
+node_modules/
+out/
+dist/
+coverage/
+.DS_Store
+Thumbs.db
+
+# Local environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Local app state
+.magnexis/
+.magnexis-desktop/
+.agent-portal-runtime.lock
+debug.log
+
+# Generated previews and screenshots
+workspaces/runtime/previews/
+screenshots/*.png
+screenshots/*.jpg
+screenshots/*.jpeg
+screenshots/*.webp
+!screenshots/.gitkeep
+
+# Build and package outputs
+*.vsix
+release/
+artifacts/
+
+# Editor and OS noise
+.idea/
+.vscode-test/
+*.log
+*.tmp

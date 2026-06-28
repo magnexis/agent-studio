@@ -1,0 +1,8 @@
+{
+  "name": "@magnexis/llm-router",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Helpers for routing requests to external LLM providers under user-supplied API keys. Magnexis hosts no model of its own.",
+  "main": "src/index.ts",
+  "type": "module"
+}

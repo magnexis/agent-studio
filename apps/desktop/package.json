@@ -1,0 +1,14 @@
+{
+  "name": "@magnexis/desktop",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Magnexis Agent Studio desktop shell.",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix ../.. run dev:desktop",
+    "start": "npm --prefix ../.. run start:desktop",
+    "start:preview": "npm --prefix ../.. run start:desktop:preview",
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

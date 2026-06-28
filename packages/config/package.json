@@ -1,0 +1,8 @@
+{
+  "name": "@magnexis/config",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Magnexis config defaults and loaders.",
+  "main": "src/index.ts",
+  "type": "module"
+}

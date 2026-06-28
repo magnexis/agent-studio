@@ -1,0 +1,14 @@
+{
+  "name": "@magnexis/vscode-extension",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Workspace for the Magnexis VS Code extension app layer.",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix ../.. run dev:extension",
+    "start": "npm --prefix ../.. run start:extension",
+    "start:preview": "npm --prefix ../.. run start:extension:preview",
+    "package": "npm --prefix ../.. run package"
+  }
+}

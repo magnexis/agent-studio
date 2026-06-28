@@ -1,0 +1,8 @@
+{
+  "name": "@magnexis/ui",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Magnexis UI tokens and shared view metadata.",
+  "main": "src/index.ts",
+  "type": "module"
+}

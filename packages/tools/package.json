@@ -1,0 +1,8 @@
+{
+  "name": "@magnexis/tools",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Agent tools and approval metadata for Magnexis.",
+  "main": "src/index.ts",
+  "type": "module"
+}
