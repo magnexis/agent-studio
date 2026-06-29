@@ -23,6 +23,31 @@
     "AI",
     "Other"
   ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:magnexis.sidebar",
+    "onCommand:magnexis.openChat",
+    "onCommand:magnexis.openSidebar",
+    "onCommand:magnexis.openChatBeside",
+    "onCommand:magnexis.openChatInNewWindow",
+    "onCommand:magnexis.pinChatNearEditor",
+    "onCommand:magnexis.newChat",
+    "onCommand:magnexis.addSelectionToThread",
+    "onCommand:magnexis.addFileToThread",
+    "onCommand:magnexis.implementTodo",
+    "onCommand:magnexis.reviewChanges",
+    "onCommand:magnexis.setApiKey",
+    "onCommand:magnexis.clearApiKeys",
+    "onCommand:magnexis.openSettings",
+    "onCommand:magnexis.testProvider",
+    "onCommand:magnexis.auth.signIn",
+    "onCommand:magnexis.auth.signUp",
+    "onCommand:magnexis.auth.signOut",
+    "onCommand:magnexis.auth.showAccount",
+    "onCommand:magnexis.auth.refreshSession",
+    "onCommand:magnexis.cloudWorkflows",
+    "onCommand:magnexis.selectRuntime"
+  ],
   "main": "./out/src/extension.js",
   "bin": {
     "magnexis": "./bin/magnexis.js"
@@ -46,6 +71,11 @@
         "command": "magnexis.openChatInNewWindow",
         "title": "Magnexis: Open Chat in New Window",
         "icon": "$(multiple-windows)"
+      },
+      {
+        "command": "magnexis.pinChatNearEditor",
+        "title": "Magnexis: Pin Chat Near Editor",
+        "icon": "$(pin)"
       },
       {
         "command": "magnexis.newChat",
