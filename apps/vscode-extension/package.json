@@ -1,6 +1,6 @@
 {
-  "name": "@magnexis/agent-studio",
-  "private": true,
+  "name": "agent-studio",
+  "private": false,
   "version": "0.4.0",
   "displayName": "Magnexis Agent Studio VS Code Extension Workspace",
   "description": "Workspace for the Magnexis VS Code extension app layer.",
