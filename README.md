@@ -12,6 +12,7 @@
   <img alt="Approval model" src="https://img.shields.io/badge/approval-manual%20by%20default-white?style=flat-square&labelColor=050505">
   <img alt="Local first" src="https://img.shields.io/badge/data-local--first-white?style=flat-square&labelColor=050505">
   <img alt="Multi provider" src="https://img.shields.io/badge/providers-19%20presets-white?style=flat-square&labelColor=050505">
+  <a href="https://marketplace.visualstudio.com/items?itemName=magnificent-language.magnexis-agent-studio"><img alt="VS Code Marketplace" src="https://img.shields.io/badge/VS%20Code-Marketplace-white?style=flat-square&labelColor=050505"></a>
   <a href="CONTRIBUTING.md"><img alt="Contributing" src="https://img.shields.io/badge/contributing-guide-white?style=flat-square&labelColor=050505"></a>
   <a href="SECURITY.md"><img alt="Security" src="https://img.shields.io/badge/security-policy-white?style=flat-square&labelColor=050505"></a>
 </p>
@@ -252,6 +253,10 @@ magnexis run "Summarize this repo" --provider openai --api responses
 
 ### VS Code extension
 
+Official Marketplace listing:
+
+- https://marketplace.visualstudio.com/items?itemName=magnificent-language.magnexis-agent-studio
+
 1. Open this repository in VS Code.
 2. Press `F5`.
 3. Choose **Run Magnexis Agent Lab**.
@@ -266,10 +271,22 @@ npm run package
 code --install-extension magnexis-agent-studio-0.4.0.vsix --force
 ```
 
+Install from the VS Code Marketplace:
+
+- Open VS Code Quick Open and run:
+
+```powershell
+ext install magnificent-language.magnexis-agent-studio
+```
+
+- Or install from the official listing:
+  https://marketplace.visualstudio.com/items?itemName=magnificent-language.magnexis-agent-studio
+
 Publish note:
 
-- run `vsce publish` from the repository root, because the root `package.json` is the real extension manifest
-- `apps/vscode-extension/package.json` is only a workspace wrapper and now proxies publishing back to root through `npm run publish`
+- official extension listing: `magnificent-language.magnexis-agent-studio`
+- Marketplace page: https://marketplace.visualstudio.com/items?itemName=magnificent-language.magnexis-agent-studio
+- `vsce publish` can now package successfully from `apps/vscode-extension` as a standalone extension package
 
 ### Desktop application
 
