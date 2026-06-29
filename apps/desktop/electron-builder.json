@@ -1,0 +1,43 @@
+{
+  "appId": "com.magnexis.agentstudio",
+  "productName": "Magnexis Agent Studio",
+  "artifactName": "magnexis-agent-studio-${version}-${os}-${arch}.${ext}",
+  "directories": {
+    "output": "dist/native"
+  },
+  "files": [
+    "apps/desktop/electron/**/*",
+    "media/**/*",
+    "out/**/*",
+    "workspaces/runtime/previews/magnexis-desktop-provider-workbench.html",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "RELEASE_NOTES.md",
+    "LICENSE",
+    ".env.example"
+  ],
+  "extraMetadata": {
+    "main": "apps/desktop/electron/main.cjs"
+  },
+  "asar": true,
+  "win": {
+    "target": [
+      "portable",
+      "nsis"
+    ]
+  },
+  "mac": {
+    "target": [
+      "dmg"
+    ],
+    "category": "public.app-category.developer-tools"
+  },
+  "linux": {
+    "target": [
+      "AppImage",
+      "deb"
+    ],
+    "category": "Development"
+  }
+}

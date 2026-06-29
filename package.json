@@ -1,7 +1,7 @@
 {
-  "name": "agent-studio",
+  "name": "magnexis-agent-studio",
   "displayName": "Magnexis Agent Studio",
-  "author": "magnificent-language",
+  "author": "Magnexis",
   "description": "A local-first coding agent workbench for VS Code. Magnexis is a connector, not a model: it routes chat, edits, and tools to any OpenAI-compatible provider you choose, using your own API key.",
   "version": "0.4.0",
   "icon": "media/magnexis-icon.png",
@@ -291,10 +291,10 @@
     "preview:web": "node workspaces/runtime/render-web-dashboard-preview.cjs && node workspaces/runtime/serve-preview.cjs web",
     "desktop": "node workspaces/runtime/render-desktop-preview.cjs && electron apps/desktop/electron/main.cjs",
     "desktop:prep": "npm run compile && node workspaces/runtime/render-desktop-preview.cjs",
-    "package:desktop:dir": "npm run desktop:prep && electron-builder --dir",
-    "package:desktop:win": "npm run desktop:prep && electron-builder --win portable nsis",
-    "package:desktop:mac": "npm run desktop:prep && electron-builder --mac dmg",
-    "package:desktop:linux": "npm run desktop:prep && electron-builder --linux AppImage deb",
+    "package:desktop:dir": "npm run desktop:prep && electron-builder --config apps/desktop/electron-builder.json --dir",
+    "package:desktop:win": "npm run desktop:prep && electron-builder --config apps/desktop/electron-builder.json --win portable nsis",
+    "package:desktop:mac": "npm run desktop:prep && electron-builder --config apps/desktop/electron-builder.json --mac dmg",
+    "package:desktop:linux": "npm run desktop:prep && electron-builder --config apps/desktop/electron-builder.json --linux AppImage deb",
     "screenshots": "python workspaces/runtime/capture-screenshots.py",
     "package:vsix": "vsce package --allow-missing-repository",
     "package": "npm run compile && npm run package:vsix",
@@ -315,48 +315,5 @@
   "dependencies": {
     "openai": "^6.4.0",
     "@supabase/supabase-js": "^2.108.2"
-  },
-  "build": {
-    "appId": "com.magnexis.agentstudio",
-    "productName": "Magnexis Agent Studio",
-    "artifactName": "magnexis-agent-studio-${version}-${os}-${arch}.${ext}",
-    "directories": {
-      "output": "dist/native"
-    },
-    "files": [
-      "apps/desktop/electron/**/*",
-      "media/**/*",
-      "out/**/*",
-      "workspaces/runtime/previews/magnexis-desktop-provider-workbench.html",
-      "package.json",
-      "README.md",
-      "CHANGELOG.md",
-      "RELEASE_NOTES.md",
-      "LICENSE",
-      ".env.example"
-    ],
-    "extraMetadata": {
-      "main": "apps/desktop/electron/main.cjs"
-    },
-    "asar": true,
-    "win": {
-      "target": [
-        "portable",
-        "nsis"
-      ]
-    },
-    "mac": {
-      "target": [
-        "dmg"
-      ],
-      "category": "public.app-category.developer-tools"
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ],
-      "category": "Development"
-    }
   }
 }

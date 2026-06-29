@@ -266,6 +266,11 @@ npm run package
 code --install-extension magnexis-agent-studio-0.4.0.vsix --force
 ```
 
+Publish note:
+
+- run `vsce publish` from the repository root, because the root `package.json` is the real extension manifest
+- `apps/vscode-extension/package.json` is only a workspace wrapper and now proxies publishing back to root through `npm run publish`
+
 ### Desktop application
 
 ```powershell

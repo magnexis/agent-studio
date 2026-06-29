@@ -1,14 +1,23 @@
 {
-  "name": "@magnexis/vscode-extension",
+  "name": "@magnexis/agent-studio",
   "private": true,
   "version": "0.4.0",
+  "displayName": "Magnexis Agent Studio VS Code Extension Workspace",
   "description": "Workspace for the Magnexis VS Code extension app layer.",
+  "publisher": "magnificent-language",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.92.0",
+    "node": ">=18.0.0"
+  },
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
     "dev": "npm --prefix ../.. run dev:extension",
     "start": "npm --prefix ../.. run start:extension",
     "start:preview": "npm --prefix ../.. run start:extension:preview",
-    "package": "npm --prefix ../.. run package"
+    "package": "npm --prefix ../.. run package",
+    "publish": "npm --prefix ../.. exec vsce publish",
+    "publish:preflight": "npm --prefix ../.. exec vsce package --allow-missing-repository"
   }
 }
