@@ -379,6 +379,15 @@ npm run package
 npm run release:bundle
 ```
 
+Native desktop packaging is wired for future release builds through `electron-builder`:
+
+```powershell
+npm run package:desktop:dir
+npm run package:desktop:win
+npm run package:desktop:mac
+npm run package:desktop:linux
+```
+
 Outputs:
 
 - VSIX: `magnexis-agent-studio-0.4.0.vsix`

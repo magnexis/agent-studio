@@ -16,7 +16,8 @@
   },
   "license": "Apache-2.0",
   "engines": {
-    "vscode": "^1.92.0"
+    "vscode": "^1.92.0",
+    "node": ">=18.0.0"
   },
   "categories": [
     "AI",
@@ -289,6 +290,11 @@
     "preview:extension": "node workspaces/runtime/render-vscode-preview.cjs && node workspaces/runtime/serve-preview.cjs extension",
     "preview:web": "node workspaces/runtime/render-web-dashboard-preview.cjs && node workspaces/runtime/serve-preview.cjs web",
     "desktop": "node workspaces/runtime/render-desktop-preview.cjs && electron apps/desktop/electron/main.cjs",
+    "desktop:prep": "npm run compile && node workspaces/runtime/render-desktop-preview.cjs",
+    "package:desktop:dir": "npm run desktop:prep && electron-builder --dir",
+    "package:desktop:win": "npm run desktop:prep && electron-builder --win portable nsis",
+    "package:desktop:mac": "npm run desktop:prep && electron-builder --mac dmg",
+    "package:desktop:linux": "npm run desktop:prep && electron-builder --linux AppImage deb",
     "screenshots": "python workspaces/runtime/capture-screenshots.py",
     "package:vsix": "vsce package --allow-missing-repository",
     "package": "npm run compile && npm run package:vsix",
@@ -302,11 +308,55 @@
     "@types/node": "^20.14.10",
     "@types/vscode": "^1.92.0",
     "@vscode/vsce": "^2.31.1",
+    "electron-builder": "^24.13.3",
     "electron": "^37.2.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {
     "openai": "^6.4.0",
     "@supabase/supabase-js": "^2.108.2"
+  },
+  "build": {
+    "appId": "com.magnexis.agentstudio",
+    "productName": "Magnexis Agent Studio",
+    "artifactName": "magnexis-agent-studio-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "dist/native"
+    },
+    "files": [
+      "apps/desktop/electron/**/*",
+      "media/**/*",
+      "out/**/*",
+      "workspaces/runtime/previews/magnexis-desktop-provider-workbench.html",
+      "package.json",
+      "README.md",
+      "CHANGELOG.md",
+      "RELEASE_NOTES.md",
+      "LICENSE",
+      ".env.example"
+    ],
+    "extraMetadata": {
+      "main": "apps/desktop/electron/main.cjs"
+    },
+    "asar": true,
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.developer-tools"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development"
+    }
   }
 }

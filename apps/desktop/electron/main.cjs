@@ -1,7 +1,6 @@
 const { app, BrowserWindow, desktopCapturer, ipcMain, safeStorage, shell, WebContentsView } = require("electron");
 const fs = require("node:fs");
 const path = require("node:path");
-const ts = require("typescript");
 
 // ============================================================================
 // CONFIGURATION CONSTANTS (Fix #10: Magic Numbers)
@@ -41,6 +40,15 @@ const desktopUserDataPath = path.join(root, ".magnexis-desktop");
 const moduleAliases = {
   "@magnexis/auth": "packages/auth/src/index.ts"
 };
+
+let ts = null;
+
+function getTypeScript() {
+  if (!ts) {
+    ts = require("typescript");
+  }
+  return ts;
+}
 
 // ============================================================================
 // APPLICATION SETUP
@@ -232,10 +240,11 @@ function loadTypeScriptModule(filePath) {
     throw error;
   }
 
-  const output = ts.transpileModule(source, {
+  const typescript = getTypeScript();
+  const output = typescript.transpileModule(source, {
     compilerOptions: {
-      module: ts.ModuleKind.CommonJS,
-      target: ts.ScriptTarget.ES2022,
+      module: typescript.ModuleKind.CommonJS,
+      target: typescript.ScriptTarget.ES2022,
       esModuleInterop: true
     },
     fileName: resolvedPath
@@ -285,7 +294,10 @@ function loadTypeScriptModule(filePath) {
 // Load auth module once at startup
 let authModule;
 try {
-  authModule = loadTypeScriptModule(path.join(root, "packages/auth/src/index.ts"));
+  const compiledAuthPath = path.join(root, "out/packages/auth/src/index.js");
+  authModule = fs.existsSync(compiledAuthPath)
+    ? require(compiledAuthPath)
+    : loadTypeScriptModule(path.join(root, "packages/auth/src/index.ts"));
 } catch (error) {
   logError("Fatal: Failed to load auth module", error);
   // Don't throw here - will be caught when auth is actually used
