@@ -18,11 +18,11 @@ debug.log
 
 # Generated previews and screenshots
 workspaces/runtime/previews/
-screenshots/*.png
-screenshots/*.jpg
-screenshots/*.jpeg
-screenshots/*.webp
+screenshots/*
 !screenshots/.gitkeep
+!screenshots/21-web-dashboard-home.png
+!screenshots/22-web-dashboard-composer.png
+!screenshots/23-vscode-panel-overview.png
 
 # Build and package outputs
 *.vsix

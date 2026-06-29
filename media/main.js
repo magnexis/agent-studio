@@ -41,6 +41,7 @@
     slashMenu: document.getElementById("slashMenu"),
     quickbar: document.querySelector(".quickbar"),
     toggleThreads: document.getElementById("toggleThreads"),
+    pinNearEditorAction: document.getElementById("pinNearEditorAction"),
     closeThreads: document.getElementById("closeThreads"),
     threadBackdrop: document.getElementById("threadBackdrop"),
     threadRail: document.getElementById("threadRail"),
@@ -686,6 +687,7 @@
       if (ui.headerMenu?.hidden) openHeaderMenu();
       else closeHeaderMenu();
     });
+    ui.pinNearEditorAction?.addEventListener("click", () => vscode.postMessage({ type: "pinNearEditor" }));
     ui.openBesideAction?.addEventListener("click", () => vscode.postMessage({ type: "openBeside" }));
     ui.popoutAction?.addEventListener("click", () => vscode.postMessage({ type: "popOut" }));
     ui.settingsPanel?.addEventListener("click", () => vscode.postMessage({ type: "openSettings" }));

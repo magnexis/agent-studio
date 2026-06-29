@@ -33,6 +33,7 @@ export function activate(context: vscode.ExtensionContext): void {
     runtimeStatusBar,
     vscode.commands.registerCommand("magnexis.openChat", () => openChat(context)),
     vscode.commands.registerCommand("magnexis.openChatBeside", () => openChat(context)),
+    vscode.commands.registerCommand("magnexis.pinChatNearEditor", () => pinChatNearEditor(context)),
     vscode.commands.registerCommand("magnexis.openChatInNewWindow", () => openChatInNewWindow(context)),
     vscode.commands.registerCommand("magnexis.openSidebar", () => vscode.commands.executeCommand("magnexis.sidebar.focus")),
     vscode.commands.registerCommand("magnexis.newChat", () => newChat(context)),
@@ -121,6 +122,14 @@ async function openChatInNewWindow(context: vscode.ExtensionContext): Promise<vo
   }
 }
 
+function pinChatNearEditor(context: vscode.ExtensionContext): vscode.WebviewPanel {
+  const panel = openChat(context);
+  panel.title = "Magnexis Agent Studio";
+  panel.reveal(vscode.ViewColumn.Beside, true);
+  void vscode.window.showInformationMessage("Pinned Magnexis beside the active editor.");
+  return panel;
+}
+
 function configureWebview(context: vscode.ExtensionContext, webview: vscode.Webview, surface: WebviewSurface): void {
   webview.options = {
     enableScripts: true,
@@ -153,7 +162,12 @@ function configureWebview(context: vscode.ExtensionContext, webview: vscode.Webv
       }
 
       if (message.type === "openBeside") {
-        openChat(context);
+        pinChatNearEditor(context);
+        return;
+      }
+
+      if (message.type === "pinNearEditor") {
+        pinChatNearEditor(context);
         return;
       }
 
@@ -680,6 +694,7 @@ type WebviewMessage =
   | { type: "setApiKey" }
   | { type: "setApiKeyForProvider"; provider: ProviderId }
   | { type: "openSettings" }
+  | { type: "pinNearEditor" }
   | { type: "openBeside" }
   | { type: "popOut" }
   | { type: "newThread" }

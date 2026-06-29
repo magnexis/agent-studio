@@ -37,10 +37,11 @@ export function renderWebview(webview: vscode.Webview, extensionUri: vscode.Uri,
       </div>
       <div class="header-actions">
         <button id="newThreadAction" class="icon-action" type="button" title="New thread" aria-label="New thread"><span aria-hidden="true">+</span><em>New</em></button>
+        <button id="pinNearEditorAction" class="icon-action sidebar-only" type="button" title="Pin near editor" aria-label="Pin near editor"><span aria-hidden="true">&#128204;</span><em>Pin</em></button>
         <button id="toggleThreads" class="icon-action" type="button" title="Browse threads" aria-label="Browse threads" aria-expanded="false" aria-controls="threadRail"><span aria-hidden="true">&#9776;</span><em>Threads</em></button>
         <button id="moreActions" class="icon-action" type="button" title="More actions" aria-label="More actions" aria-expanded="false" aria-controls="headerMenu"><span aria-hidden="true">&#8943;</span><em>More</em></button>
         <div id="headerMenu" class="header-menu" hidden>
-          <button id="openBesideAction" class="sidebar-only" type="button"><span aria-hidden="true">&#9707;</span><span><strong>Open beside editor</strong><small>Use a split editor group</small></span></button>
+          <button id="openBesideAction" class="sidebar-only" type="button"><span aria-hidden="true">&#128204;</span><span><strong>Pin near editor</strong><small>Open this workspace beside your code</small></span></button>
           <button id="popoutAction" type="button"><span aria-hidden="true">&#8599;</span><span><strong>Open in new window</strong><small>Move this chat into its own window</small></span></button>
           <button id="settingsPanel" type="button"><span aria-hidden="true">&#9881;</span><span><strong>Settings</strong><small>Providers, permissions, and context</small></span></button>
         </div>

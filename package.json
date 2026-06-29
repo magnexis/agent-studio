@@ -1,11 +1,11 @@
 {
-  "name": "magnexis-agent-studio",
+  "name": "agent-studio",
   "displayName": "Magnexis Agent Studio",
-  "author": "Magnexis",
+  "author": "magnificent-language",
   "description": "A local-first coding agent workbench for VS Code. Magnexis is a connector, not a model: it routes chat, edits, and tools to any OpenAI-compatible provider you choose, using your own API key.",
   "version": "0.4.0",
   "icon": "media/magnexis-icon.png",
-  "publisher": "magnexis",
+  "publisher": "magnificent-language",
   "repository": {
     "type": "git",
     "url": "https://github.com/magnexis/magnexis-agent-studio.git"
