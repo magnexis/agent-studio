@@ -2,6 +2,24 @@
 
 All notable changes to Magnexis Agent Studio will be documented here.
 
+## 0.4.1 - 2026-06-30
+
+### Improved
+
+- tightened VSIX packaging so the extension now ships only the runtime dependencies it actually needs instead of the entire installed `node_modules` tree.
+- aligned release metadata, versioned artifacts, and Marketplace install instructions for the new build.
+
+### Fixed
+
+- restored extension activation after VSIX install by packaging the runtime `openai`, `@supabase/*`, `iceberg-js`, and `tslib` dependencies required at startup.
+- corrected the provider connection test notification text so success and failure messages render cleanly in VS Code.
+
+### Release Artifacts
+
+- `magnexis-agent-studio-0.4.1.vsix`
+- `dist/releases/magnexis-agent-studio-0.4.1/`
+- `dist/releases/magnexis-agent-studio-0.4.1.zip`
+
 ## 0.4.0 - 2026-06-28
 
 ### Added

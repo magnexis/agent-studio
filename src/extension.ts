@@ -761,8 +761,8 @@ async function testProvider(context: vscode.ExtensionContext): Promise<void> {
         apiKey: apiKey ?? undefined
       });
       const heading = result.ok
-        ? `${provider.label}: connected — ${result.detail}`
-        : `${provider.label}: connection failed — ${result.detail}`;
+        ? `${provider.label}: connected - ${result.detail}`
+        : `${provider.label}: connection failed - ${result.detail}`;
       const modelList = result.models.length
         ? `\n\nModels available:\n${result.models.slice(0, 12).map((model) => `  - ${model}`).join("\n")}${result.models.length > 12 ? `\n  ...and ${result.models.length - 12} more` : ""}`
         : "";

@@ -7,7 +7,7 @@
 <p align="center">A local-first coding-agent workbench for VS Code, desktop, web, and CLI.</p>
 
 <p align="center">
-  <img alt="Version 0.4.0" src="https://img.shields.io/badge/version-0.4.0-white?style=flat-square&labelColor=050505">
+  <img alt="Version 0.4.1" src="https://img.shields.io/badge/version-0.4.1-white?style=flat-square&labelColor=050505">
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-strict-white?style=flat-square&labelColor=050505">
   <img alt="Approval model" src="https://img.shields.io/badge/approval-manual%20by%20default-white?style=flat-square&labelColor=050505">
   <img alt="Local first" src="https://img.shields.io/badge/data-local--first-white?style=flat-square&labelColor=050505">
@@ -26,7 +26,7 @@ Magnexis Agent Studio is an original developer tool for working with coding agen
 
 Magnexis is a connector, not an LLM provider. It does not host its own model, inference endpoint, or hidden routing layer. It connects your workspace to the provider and model you choose under your own credentials.
 
-Version `0.4.0` includes:
+Version `0.4.1` includes:
 
 - the VS Code Agent Lab experience
 - the Electron desktop workbench
@@ -268,7 +268,7 @@ Build and install the VSIX:
 
 ```powershell
 npm run package
-code --install-extension magnexis-agent-studio-0.4.0.vsix --force
+code --install-extension magnexis-agent-studio-0.4.1.vsix --force
 ```
 
 Install from the VS Code Marketplace:
@@ -412,9 +412,9 @@ npm run package:desktop:linux
 
 Outputs:
 
-- VSIX: `magnexis-agent-studio-0.4.0.vsix`
-- local release folder: `dist/releases/magnexis-agent-studio-0.4.0/`
-- zipped release bundle: `dist/releases/magnexis-agent-studio-0.4.0.zip`
+- VSIX: `magnexis-agent-studio-0.4.1.vsix`
+- local release folder: `dist/releases/magnexis-agent-studio-0.4.1/`
+- zipped release bundle: `dist/releases/magnexis-agent-studio-0.4.1.zip`
 
 The release bundle includes:
 
@@ -506,7 +506,7 @@ Check that the local machine allows VS Code or Electron to open the default syst
 
 ## Status
 
-This is an active `0.4.0` development build.
+This is an active `0.4.1` development build.
 
 The strongest current path is:
 

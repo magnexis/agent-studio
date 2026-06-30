@@ -1,56 +1,34 @@
-# Magnexis Agent Studio 0.4.0 Release Notes
+# Magnexis Agent Studio 0.4.1 Release Notes
 
-Magnexis Agent Studio `0.4.0` is a release-prep build focused on product cohesion, packaging cleanup, and a much more complete developer-facing surface across web, desktop, extension, and docs.
+Magnexis Agent Studio `0.4.1` is a stabilization release focused on extension install reliability, tighter VSIX packaging, and release metadata cleanup.
 
 ## Highlights
 
-- new VS Code pin workflow:
-  - `Magnexis: Pin Chat Near Editor`
-  - visible pin action in the Agent Lab header
-  - cleaner split-editor behavior for keeping chat next to code
-- richer project README with real UI previews
-- release bundle generation for docs, screenshots, previews, and VSIX
-- improved web workspace branding and provider/model dropdown treatment
+- fixed a packaging regression that prevented the installed VSIX from activating in VS Code because runtime dependencies were missing.
+- tightened the shipped dependency set so the VSIX includes only the runtime modules required by the extension host.
+- cleaned up release metadata, artifact names, and install instructions for the new build.
 
-## Surface Updates
+## VS Code Extension
 
-### VS Code Extension
-
-- clearer “pin near editor” action in the extension UI
-- dedicated command palette command for pinning chat beside code
-- sidebar title actions now expose the pinning workflow more explicitly
-
-### Web Workspace
-
-- real Magnexis branding in the sidebar
-- provider logos in selected dropdown values and option lists
-- tighter route selection and inspector presentation
-
-### Desktop
-
-- included in the release bundle and preview packaging flow
-- continues to support isolated `llm-stats.com` embedding from the native runtime
+- VSIX installs now activate correctly because required runtime packages are included in the shipped extension bundle.
+- provider connection test notifications now render clean success and failure text in VS Code.
 
 ## Packaging and Repo Hygiene
 
-- VSIX packaging now excludes:
-  - `.env`
-  - debug logs
-  - local desktop state
-- `.gitignore` now reflects actual generated and local-only outputs
-- `CONTRIBUTING.md`, `SECURITY.md`, and `CHANGELOG.md` added for release readiness
+- VSIX packaging now allows only the exact runtime dependency packages the extension resolves at startup.
+- local-only files such as `.env`, debug logs, preview state, and workspace sources remain excluded from the shipped extension.
+- versioned docs and release metadata now match the packaged build.
 
 ## Artifacts
 
-- VSIX: `magnexis-agent-studio-0.4.0.vsix`
-- bundle folder: `dist/releases/magnexis-agent-studio-0.4.0/`
-- zipped bundle: `dist/releases/magnexis-agent-studio-0.4.0.zip`
+- VSIX: `magnexis-agent-studio-0.4.1.vsix`
+- bundle folder: `dist/releases/magnexis-agent-studio-0.4.1/`
+- zipped bundle: `dist/releases/magnexis-agent-studio-0.4.1.zip`
 
 ## Still Not Automated
 
 - GitHub Releases publishing
-- VS Code Marketplace publishing
 - signed native desktop installers
 - hosted update manifests
 
-Those still require authenticated release infrastructure outside this repo.
+VS Code Marketplace publishing still requires authenticated credentials in the current environment.

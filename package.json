@@ -3,7 +3,7 @@
   "displayName": "Magnexis Agent Studio",
   "author": "Magnexis",
   "description": "A local-first coding agent workbench for VS Code. Magnexis is a connector, not a model: it routes chat, edits, and tools to any OpenAI-compatible provider you choose, using your own API key.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "icon": "media/magnexis-icon.png",
   "publisher": "magnificent-language",
   "repository": {
