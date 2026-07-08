@@ -2,6 +2,16 @@
 
 All notable changes to Magnexis Agent Studio will be documented here.
 
+## 0.4.3 - 2026-07-09
+
+### Fixed
+
+- Same security and bug fixes as 0.4.2, republished under the correct version number after discovering 0.4.2 was already occupied on the Marketplace.
+
+### Release Artifacts
+
+- `magnexis-agent-studio-0.4.3.vsix`
+
 ## 0.4.2 - 2026-07-09
 
 ### Security
