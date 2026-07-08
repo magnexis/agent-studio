@@ -2,6 +2,25 @@
 
 All notable changes to Magnexis Agent Studio will be documented here.
 
+## 0.4.2 - 2026-07-09
+
+### Security
+
+- **path traversal bypass in `resolveWorkspacePath`** — the original check used `normalized.includes("../")` which could be bypassed by paths like `foo/..` (bare `..` segment without trailing slash). Now splits on `/` and checks each segment, catching all traversal patterns. (Closes #7)
+
+### Fixed
+
+- **`limitBytes` underflow in `src/tools.ts`** — when `end` decremented past zero via `end -= 100`, `text.slice(0, end)` silently returned an empty string. Added a lower-bound guard (`end <= 0 → end = 1`) so at least one character is always returned. (Closes #5)
+- **`limitBytes` underflow in `src/workspaceContext.ts`** — same underflow bug as `tools.ts`; applied identical lower-bound guard. (Closes #6)
+- **`limitBytes` underflow in `src/instructions.ts`** — same underflow bug; applied identical guard for the AGENTS.md truncation path. (Closes #8)
+- **`shouldIgnorePath` false positives in `packages/indexer/src/index.ts`** — `normalized.includes(entry)` matched substrings (e.g. `"dist"` matched `distribute.ts`). Changed to segment-based matching via `segments.includes(entry)` so only exact path-component matches are ignored.
+
+### Release Artifacts
+
+- `magnexis-agent-studio-0.4.2.vsix`
+- `dist/releases/magnexis-agent-studio-0.4.2/`
+- `dist/releases/magnexis-agent-studio-0.4.2.zip`
+
 ## 0.4.1 - 2026-06-30
 
 ### Improved
