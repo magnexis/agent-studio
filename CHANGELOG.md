@@ -2,6 +2,12 @@
 
 All notable changes to Magnexis Agent Studio will be documented here.
 
+## 0.4.4 - 2026-07-09
+
+### Fixed
+
+- **extension fails to activate** — `src/webview.ts` imported `providerPresets` via the TypeScript path alias `@magnexis/llm-router`, which compiled to an unresolvable `require("@magnexis/llm-router")` at runtime. Changed to a relative import (`../packages/llm-router/src`) matching every other cross-package import in the extension.
+
 ## 0.4.3 - 2026-07-09
 
 ### Fixed

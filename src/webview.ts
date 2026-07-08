@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { providerPresets } from "@magnexis/llm-router";
+import { providerPresets } from "../packages/llm-router/src";
 
 export type WebviewSurface = "sidebar" | "panel";
 
