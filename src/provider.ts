@@ -124,9 +124,14 @@ export function getProviderConfigById(id: ProviderId): ProviderConfig {
     };
   }
 
+  const preset = presets[id];
+  if (!preset) {
+    return getProviderConfigById("zai");
+  }
+
   return {
     id,
-    ...presets[id]
+    ...preset
   };
 }
 

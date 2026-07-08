@@ -87,8 +87,11 @@ function limitBytes(text: string, maxBytes: number): string {
   }
 
   let end = Math.min(text.length, maxBytes);
-  while (end > 0 && encoder.encode(text.slice(0, end)).byteLength > maxBytes) {
+  while (end > 100 && encoder.encode(text.slice(0, end)).byteLength > maxBytes) {
     end -= 100;
+  }
+  if (end <= 0) {
+    end = 1;
   }
   return `${text.slice(0, end)}\n\n[AGENTS.md truncated to fit context window.]`;
 }

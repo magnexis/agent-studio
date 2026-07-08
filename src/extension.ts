@@ -684,7 +684,7 @@ async function applyWorkspaceEdit(document: WorkspaceEditDocument): Promise<void
 
 function resolveWorkspacePath(workspaceFolder: vscode.WorkspaceFolder, relativePath: string): vscode.Uri {
   const normalized = relativePath.replace(/\\/g, "/");
-  if (path.isAbsolute(normalized) || normalized.includes("../")) {
+  if (path.isAbsolute(normalized) || normalized.split("/").includes("..")) {
     throw new Error(`Refusing to write outside the workspace: ${relativePath}`);
   }
   return vscode.Uri.joinPath(workspaceFolder.uri, normalized);

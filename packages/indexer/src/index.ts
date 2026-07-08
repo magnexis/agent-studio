@@ -35,7 +35,8 @@ export function mergeIndexerConfig(config: MagnexisConfig): IndexerConfig {
 
 export function shouldIgnorePath(pathname: string, ignoreList: string[] = defaultIndexerConfig.ignore): boolean {
   const normalized = pathname.replace(/\\/g, "/");
-  return ignoreList.some((entry) => normalized.includes(entry));
+  const segments = normalized.split("/");
+  return ignoreList.some((entry) => segments.includes(entry));
 }
 
 export function summarizeIndexedPaths(paths: string[], ignoreList: string[] = defaultIndexerConfig.ignore): IndexedFileSummary[] {
